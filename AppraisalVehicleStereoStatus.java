@@ -1,44 +1,63 @@
-package com.factory.appraisal.vehiclesearchapp.dto;
+package com.factory.appraisal.vehiclesearchapp.persistence.model;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.envers.Audited;
 
-public class AppraisalVehicleStereoStatus {
+import javax.persistence.*;
 
-    @NotNull
-    @Size(max = 15)
+@Audited
+@Entity
+@Table(name="FACTORY_DB.APR_VEH_STEREO_STATUS")
+@DynamicUpdate
+@DynamicInsert
+@AttributeOverride(name = "valid", column = @Column(name = "IS_ACTIVE"))
+public class AppraisalVehicleStereoStatus extends TransactionEntity{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "STEREO_ST_ID")
+    private long stereoStatusId ;
+    @Column(name="appraisalStatusId")
     private long appraisalStatusId ;
-    @NotNull
+    @Column(name = "FACTORY_EQU_OP")
     private boolean factoryEquipmentOperational ;
-    @NotNull
+    @Column(name = "EQPT_NOT_OP")
     private boolean factoryEquipmentNotOperational ;
-    @NotNull
+    @Column(name = "KNOBS_MISSING")
     private boolean knobsMissing ;
-    @NotNull
+    @Column(name = "AFT_MKT_NAV_NICE_SYS")
     private boolean afterMarketNavigationNiceSystem ;
-    @NotNull
+    @Column(name = "AFT_MKT")
     private boolean afterMarket;
-    @NotNull
+    @Column(name = "AFT_MKT_R_ENTMT_SYS")
     private boolean aftermarketRearEntertainmentSystem ;
-    @NotNull
+    @Column(name = "FACTORY_R_ENTMT_SYS")
     private boolean factoryRearEntertainmentSystem ;
-    @NotNull
+    @Column(name = "PRO_INSTALL")
     private boolean professionalInstall ;
-    @NotNull
+    @Column(name = "BROKEN_SCREEN")
     private boolean brokenScreen ;
-    @NotNull
+    @Column(name = "FADED_DIS_OR_BTNS")
     private boolean fadedDisplayButtons ;
-    @NotNull
+    @Column(name = "NOT_OPRNL")
     private boolean notOperational ;
-    @NotNull
+    @Column(name = "OPERATIONAL")
     private boolean operational ;
 
-    public long getAppraisalStatusId() {
+    public long getStereoStatusId() {
+        return stereoStatusId;
+    }
+
+    public void setStereoStatusId(long stereoStatusId) {
+        this.stereoStatusId = stereoStatusId;
+    }
+
+    public long getAPR_STATUS_ID() {
         return appraisalStatusId;
     }
 
-    public void setAppraisalStatusId(long appraisalStatusId) {
-        this.appraisalStatusId = appraisalStatusId;
+    public void setAPR_STATUS_ID(long APR_STATUS_ID) {
+        this.appraisalStatusId = APR_STATUS_ID;
     }
 
     public boolean isFactoryEquipmentOperational() {
