@@ -1,66 +1,46 @@
-package com.factory.appraisal.vehiclesearchapp.persistence.model;
+package com.factory.appraisal.vehiclesearchapp.dto;
 
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.envers.Audited;
-
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Audited
-@Entity
-@Table(name="FACTORY_DB.APR_VEH_INTR_CONDN")
-@DynamicUpdate
-@DynamicInsert
-@AttributeOverride(name = "valid", column = @Column(name = "IS_ACTIVE"))
-public class AppraisalVehicleInteriorCondition extends TransactionEntity{
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "INTR_CONDN_ID")
+public class AppraisalVehicleInteriorCondition {
+
+
+    @NotNull
     @Size(max = 15)
-    private long interiorConditionId ;
-    @Column(name="appraisalStatusId")
     private long appraisalStatusId;
-    @Column(name = "CLEAN_FL")
-    private boolean cleanFrontlineReady ;
-    @Column(name = "GOOD_MNR_RPR_ND")
-    private boolean goodMinorRepairsNeeded ;
-    @Column(name = "SMOKERS_CAR")
-    private boolean smokersCar ;
-    @Column(name = "ODD_SMELL")
-    private boolean oddSmelling ;
-    @Column(name = "VERY_DIRTY")
-    private boolean veryDirty ;
-    @Column(name = "STG_PET_SMELL")
-    private boolean strongPetSmell ;
-    @Column(name = "DRV_SEAT_WEAR")
-    private boolean driversSeatWear ;
-    @Column(name = "HL_NEED_RPLC")
-    private boolean headlinearNeedReplacement ;
-    @Column(name = "DRV_SEAT_RIPPED")
+    @NotNull
+    private boolean cleanFrontlineReady;
+    @NotNull
+    private boolean goodMinorRepairsNeeded;
+    @NotNull
+    private boolean smokersCar;
+    @NotNull
+    private boolean oddSmelling;
+    @NotNull
+    private boolean veryDirty;
+    @NotNull
+    private boolean strongPetSmell;
+    @NotNull
+    private boolean driversSeatWear;
+    @NotNull
+    private boolean headlinearNeedReplacement;
+    @NotNull
     private boolean driverSeatRipped;
 
-    @Column(name = "DASH_CRACKED_MNR")
-    private boolean dashCrackedMinor ;
-    @Column(name = "DASH_CRK_BRKN_MAJ")
-    private boolean dashCrackedBrokenMajor ;
-    @Column(name = "PAX_SEAT_RIPPED")
-    private boolean passengerSeatRipped ;
-    @Column(name = "CARPET_BADLY_WORN")
-    private boolean carpetBadlyWorn ;
-    @Column(name = "INT_TRIM_BRKN_MS")
-    private boolean interiorTrimBrokenMissing ;
-    @Column(name = "POOR_NEEDS_RPR")
-    private boolean poorNeedsRepair ;
-
-    public long getInteriorConditionId() {
-        return interiorConditionId;
-    }
-
-    public void setInteriorConditionId(long interiorConditionId) {
-        this.interiorConditionId = interiorConditionId;
-    }
+    @NotNull
+    private boolean dashCrackedMinor;
+    @NotNull
+    private boolean dashCrackedBrokenMajor;
+    @NotNull
+    private boolean passengerSeatRipped;
+    @NotNull
+    private boolean carpetBadlyWorn;
+    @NotNull
+    private boolean interiorTrimBrokenMissing;
+    @NotNull
+    private boolean poorNeedsRepair;
 
     public long getAppraisalStatusId() {
         return appraisalStatusId;

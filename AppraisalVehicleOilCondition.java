@@ -1,46 +1,27 @@
-package com.factory.appraisal.vehiclesearchapp.persistence.model;
+package com.factory.appraisal.vehiclesearchapp.dto;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.envers.Audited;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import javax.persistence.*;
+public class AppraisalVehicleOilCondition {
 
-@Audited
-@Entity
-@Table(name="FACTORY_DB.APR_VEH_OIL_CONDN")
-@DynamicUpdate
-@DynamicInsert
-@AttributeOverride(name = "valid", column = @Column(name = "IS_ACTIVE"))
-public class AppraisalVehicleOilCondition extends TransactionEntity {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "V_OIL_CONDN_ID")
-    private long vehicleOilConditionId;
-    @Column(name="appraisalStatusId")
+    @NotNull
+    @Size(max = 15)
     private long appraisalStatusId;
-    @Column(name = "CLEAN_OIL")
+    @NotNull
     private boolean cleanOil ;
-    @Column(name = "DIRTY_OIL")
+    @NotNull
     private boolean dirtyOil ;
-    @Column(name = "WTR_IN_OIL")
+    @NotNull
     private boolean waterInOil;
-    @Column(name = "CRT_LEVEL")
+    @NotNull
     private boolean correctLevel ;
-    @Column(name = "S_QUART_LOW")
+    @NotNull
     private boolean  oneQuartLow ;
-    @Column(name = "GT_QUART_LOW")
+    @NotNull
     private boolean moreThanAQuartLow ;
-    @Column(name = "EC_GAUGE")
+    @NotNull
     private boolean electronicGauge ;
-
-    public long getVehicleOilConditionId() {
-        return vehicleOilConditionId;
-    }
-
-    public void setVehicleOilConditionId(long vehicleOilConditionId) {
-        this.vehicleOilConditionId = vehicleOilConditionId;
-    }
 
     public long getAppraisalStatusId() {
         return appraisalStatusId;
